@@ -14,6 +14,9 @@
 		8837814A2BA931DF00FCD2B1 /* goodweatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883781492BA931DF00FCD2B1 /* goodweatherTests.swift */; };
 		883781542BA931DF00FCD2B1 /* goodweatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883781532BA931DF00FCD2B1 /* goodweatherUITests.swift */; };
 		883781562BA931DF00FCD2B1 /* goodweatherUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883781552BA931DF00FCD2B1 /* goodweatherUITestsLaunchTests.swift */; };
+		883781642BA9320F00FCD2B1 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883781632BA9320F00FCD2B1 /* Weather.swift */; };
+		883781672BA932DC00FCD2B1 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883781662BA932DC00FCD2B1 /* WeatherService.swift */; };
+		8837816A2BA9374C00FCD2B1 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883781692BA9374C00FCD2B1 /* WeatherViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,10 @@
 		8837814F2BA931DF00FCD2B1 /* goodweatherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = goodweatherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		883781532BA931DF00FCD2B1 /* goodweatherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = goodweatherUITests.swift; sourceTree = "<group>"; };
 		883781552BA931DF00FCD2B1 /* goodweatherUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = goodweatherUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		883781632BA9320F00FCD2B1 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		883781662BA932DC00FCD2B1 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
+		883781692BA9374C00FCD2B1 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		8837816B2BA93CE000FCD2B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +101,10 @@
 		883781372BA931DE00FCD2B1 /* goodweather */ = {
 			isa = PBXGroup;
 			children = (
+				8837816B2BA93CE000FCD2B1 /* Info.plist */,
+				883781682BA9373900FCD2B1 /* View Models */,
+				883781652BA932CD00FCD2B1 /* services */,
+				883781622BA931F800FCD2B1 /* models */,
 				883781382BA931DE00FCD2B1 /* goodweatherApp.swift */,
 				8837813A2BA931DE00FCD2B1 /* ContentView.swift */,
 				8837813C2BA931DF00FCD2B1 /* Assets.xcassets */,
@@ -125,6 +136,30 @@
 				883781552BA931DF00FCD2B1 /* goodweatherUITestsLaunchTests.swift */,
 			);
 			path = goodweatherUITests;
+			sourceTree = "<group>";
+		};
+		883781622BA931F800FCD2B1 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				883781632BA9320F00FCD2B1 /* Weather.swift */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		883781652BA932CD00FCD2B1 /* services */ = {
+			isa = PBXGroup;
+			children = (
+				883781662BA932DC00FCD2B1 /* WeatherService.swift */,
+			);
+			path = services;
+			sourceTree = "<group>";
+		};
+		883781682BA9373900FCD2B1 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				883781692BA9374C00FCD2B1 /* WeatherViewModel.swift */,
+			);
+			path = "View Models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,7 +292,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8837816A2BA9374C00FCD2B1 /* WeatherViewModel.swift in Sources */,
+				883781672BA932DC00FCD2B1 /* WeatherService.swift in Sources */,
 				8837813B2BA931DE00FCD2B1 /* ContentView.swift in Sources */,
+				883781642BA9320F00FCD2B1 /* Weather.swift in Sources */,
 				883781392BA931DE00FCD2B1 /* goodweatherApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -425,6 +463,10 @@
 				DEVELOPMENT_TEAM = 4KWUX6ULKJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = goodweather/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -454,6 +496,10 @@
 				DEVELOPMENT_TEAM = 4KWUX6ULKJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = goodweather/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
