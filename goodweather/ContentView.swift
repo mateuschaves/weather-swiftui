@@ -8,44 +8,54 @@
 import SwiftUI
 
 struct ContentView: View {
+        
+    @State private var city: String = ""
+    @State private var isFetchingWeather: Bool = false
+    @State private var weather: Weather?
     
-    @ObservedObject var weatherVM: WeatherViewModel
+    let geocodingClient = GeocodingClient()
+    let weatherClient = WeatherClient()
     
-    init(weatherVM: WeatherViewModel) {
-        self.weatherVM = WeatherViewModel(weatherService: WeatherService())
+    
+    private func fetchWeather() async {
+        do {
+            guard let location = try await geocodingClient.coordinateByCity(city) else { return }
+            
+            weather = try await weatherClient.fetchWeather(location: location)
+        } catch {
+            
+        }
     }
     
     var body: some View {
-        VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/) {
-            TextField("Enter city name", text: self.$weatherVM.cityName) {
-                self.weatherVM.search()
-            }
-            .font(.custom("Arial", size: 50))
-            .padding(/*@START_MENU_TOKEN@*/EdgeInsets()/*@END_MENU_TOKEN@*/)
-            .fixedSize()
+        VStack {
+            TextField("City", text: $city)
+                .textFieldStyle(.roundedBorder)
+                .onSubmit {
+                    isFetchingWeather = true
+                }.task(id: isFetchingWeather) {
+                    if isFetchingWeather {
+                        await fetchWeather()
+                        isFetchingWeather = false
+                        city = ""
+                    }
+                }
             
-            Text(self.weatherVM.temperature)
-            .font(.custom("Arial", size: 100))
-            .foregroundColor(Color.white)
-            .padding(/*@START_MENU_TOKEN@*/EdgeInsets()/*@END_MENU_TOKEN@*/)
-            .offset(y: 100)
-            .offset(y: -100)
-            .fixedSize()
-        }
-        .frame(
-            minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/,
-            maxWidth:
-                    .infinity,
-            minHeight: 0,
-            maxHeight:
-                    .infinity
-        ).background(Color.green)
-        .ignoresSafeArea(.all)
+            Spacer()
+            
+            if let weather {
+                Text(MeasurementFormatter.temperature(value: weather.temp ?? 0))
+                    .font(.system(size: 100))
+            }
+            
+            Spacer()
+           
+        }.padding()
     }
 }
 
 #if DEBUG
 #Preview {
-    ContentView(weatherVM: WeatherViewModel(weatherService: WeatherService()))
+    ContentView()
 }
 #endif

@@ -13,5 +13,4 @@ struct WeatherResponse: Decodable {
 
 struct Weather: Decodable {
     var temp: Double?
-    var humidity: Double?
 }
